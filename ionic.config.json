@@ -1,0 +1,7 @@
+{
+  "name": "covidcarnet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
