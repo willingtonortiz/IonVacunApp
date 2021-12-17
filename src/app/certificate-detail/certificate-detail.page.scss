@@ -1,0 +1,43 @@
+ion-content {
+  --background: #fbfbfb;
+}
+
+.container {
+  background-color: #fbfbfb;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.minsa-logo {
+  display: block;
+  max-height: 60px;
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 24px;
+}
+
+.label,
+.content {
+  display: block;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.content {
+}
+
+.center {
+  text-align: center;
+}
+
+.dose {
+  border-radius: 16px;
+  background-color: #ffffff;
+}

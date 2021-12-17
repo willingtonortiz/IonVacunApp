@@ -1,27 +1,31 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-content {
+  --background: #fafcfd;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  &__swiper {
+    box-sizing: border-box;
+    flex: 1;
+    width: 100%;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+:host ::ng-deep .swiper-wrapper {
+  box-sizing: border-box;
+  padding: 32px 0;
 }
 
-#container a {
-  text-decoration: none;
+:host ::ng-deep .swiper-horizontal > .swiper-pagination-bullets {
+  top: 0;
+  bottom: unset;
+}
+
+:host ::ng-deep .swiper-pagination-bullet {
+  background-color: var(--ion-color-primary);
 }

@@ -1,0 +1,123 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <strong>Certificado de vacunación</strong>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="container">
+    <img
+      class="minsa-logo"
+      src="assets/images/minsa-logo.jpg"
+      alt="minsa-logo"
+    />
+
+    <canvas class="barcode" #barcode></canvas>
+
+    <ion-grid fixed>
+      <ion-row class="row">
+        <ion-col>
+          <span class="label">Nombre</span>
+          <span class="content">{{certificate.name}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row">
+        <ion-col>
+          <span class="label">Documento de Identidad</span>
+          <span class="content">{{certificate.document}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row">
+        <ion-col size="6">
+          <span class="label">Fecha de Nacimiento</span>
+          <span class="content">
+            {{certificate.birthDate | date:'dd/MM/yyyy'}}
+          </span>
+        </ion-col>
+
+        <ion-col size="6">
+          <span class="label">Sexo</span>
+          <span class="content">{{certificate.genre}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row">
+        <ion-col>
+          <span class="label">Nacionalidad</span>
+          <span class="content">{{certificate.nationality}}</span>
+        </ion-col>
+
+        <ion-col>
+          <span class="label">Vacuna</span>
+          <span class="content">{{certificate.vaccine}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row" *ngFor="let dose of certificate.doses">
+        <ion-grid class="dose ion-padding">
+          <ion-row>
+            <ion-col>
+              <span class="label">{{dose.name}}</span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <span class="label">Fecha de vacunación</span>
+              <span class="content">
+                {{dose.vaccinationDate | date:'dd/MM/yyyy'}}
+              </span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <span class="label">Fabricante y lote de vacuna</span>
+              <span class="content">{{dose.manufacturer}}</span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <span class="label">Lugar de vacunación</span>
+              <span class="content">{{dose.vaccinationPlace}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-row>
+
+      <ion-row class="row">
+        <ion-col>
+          <span class="label center">Certificado emitido por:</span>
+          <span class="content center">{{certificate.issueBy}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="row">
+        <ion-col>
+          <span class="label center">Fecha de emisión</span>
+          <span class="content center">
+            {{certificate.issueDate | date:'dd/MM/yyyy'}}
+          </span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="downloadPdf()" expand="block" color="danger">
+            <ion-icon slot="start" name="download"></ion-icon>
+            Descargar pdf
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

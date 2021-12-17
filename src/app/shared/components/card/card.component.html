@@ -1,0 +1,20 @@
+<h1 class="header">{{ certificate.name }}</h1>
+
+<canvas class="barcode" #barcode></canvas>
+
+<span class="helper-text">Escanea este QR para ver el certificado</span>
+
+<a
+  class="certificate-link"
+  [routerLink]="['/certificate-detail', certificate.id]"
+>
+  Ver el certificado
+</a>
+
+<ion-fab-button
+  class="delete-button"
+  (click)="deleteCertifcate()"
+  shape="round"
+>
+  <ion-icon name="close" color="danger"></ion-icon>
+</ion-fab-button>

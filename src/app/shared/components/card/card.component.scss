@@ -1,0 +1,47 @@
+:host {
+  // background-color: mediumseagreen;
+  background-color: #ffffff;
+
+  border-radius: 16px;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 32px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  font-weight: bold;
+  text-align: center;
+  font-size: 32px;
+}
+
+.barcode {
+  width: 100%;
+}
+
+.helper-text {
+  color: #9c9c9c;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.certificate-link {
+  text-decoration: underline;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.delete-button {
+  position: absolute;
+  right: 0;
+  top: -20px;
+
+  --ion-color-primary: #ffffff;
+  --box-shadow: unset;
+}
