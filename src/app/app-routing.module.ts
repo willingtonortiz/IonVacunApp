@@ -19,6 +19,13 @@ const routes: Routes = [
         (m) => m.CertificateDetailPageModule
       ),
   },
+  {
+    path: 'add-certificate',
+    loadChildren: () =>
+      import('./add-certificate/add-certificate.module').then(
+        (m) => m.AddCertificatePageModule
+      ),
+  },
 ];
 
 @NgModule({

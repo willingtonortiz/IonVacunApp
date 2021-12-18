@@ -1,6 +1,7 @@
 export type Certificate = {
   id: string;
   name: string;
+  documentType: string;
   document: string;
   birthDate: Date;
   genre: string;
@@ -23,6 +24,7 @@ export type Dose = {
 export const EMPTY_CERTIFICATE: Certificate = {
   id: '',
   name: '',
+  documentType: '',
   document: '',
   birthDate: new Date(),
   genre: '',

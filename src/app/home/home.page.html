@@ -11,7 +11,7 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="addCertificate()">
         <ion-icon slot="icon-only" name="add-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -20,9 +20,30 @@
 
 <ion-content class="ion-padding" scrollY="false">
   <div class="container">
-    <swiper [config]="swiperConfig" class="container__swiper">
+    <div class="add-certificate" *ngIf="certificates.length === 0">
+      <ion-button
+        (click)="addCertificate()"
+        expand="block"
+        fill="clear"
+        color="dark"
+        style="background-color: #ffffff"
+      >
+        <ion-icon slot="start" name="add-circle"></ion-icon>
+
+        Agregar un nuevo carnet
+      </ion-button>
+    </div>
+
+    <swiper
+      *ngIf="certificates.length > 0"
+      [config]="swiperConfig"
+      class="container__swiper"
+    >
       <ng-template swiperSlide *ngFor="let certificate of certificates">
-        <app-card [certificate]="certificate"></app-card>
+        <app-card
+          [certificate]="certificate"
+          (deleted)="deleteCertificate($event)"
+        ></app-card>
       </ng-template>
     </swiper>
 

@@ -1,12 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as QRCode from 'qrcode';
+
 import { Certificate, EMPTY_CERTIFICATE } from '../models/certificate';
 import { CertificateService } from '../services/certificate.service';
 
@@ -15,9 +10,9 @@ import { CertificateService } from '../services/certificate.service';
   templateUrl: './certificate-detail.page.html',
   styleUrls: ['./certificate-detail.page.scss'],
 })
-export class CertificateDetailPage implements OnInit, AfterViewInit {
+export class CertificateDetailPage implements OnInit {
   @ViewChild('barcode', { static: true })
-  canvasElement: ElementRef;
+  canvasElement!: ElementRef;
 
   certificate: Certificate = EMPTY_CERTIFICATE;
 
@@ -29,51 +24,18 @@ export class CertificateDetailPage implements OnInit, AfterViewInit {
   ngOnInit() {
     const certificateId = this.route.snapshot.params.id as string;
 
-    // this.certificateService
-    //   .getOneCachedById(certificateId)
-    //   .subscribe((certificate) => (this.certificate = certificate));
-
-    this.certificate = {
-      ...EMPTY_CERTIFICATE,
-      id: certificateId,
-      qrData: certificateId,
-      name: 'Ricardo Daniel Iglesias Espinoza',
-      document: 'DNI: 20729995',
-      birthDate: new Date('1999/08/03'),
-      genre: 'Masculino',
-      nationality: 'PERU',
-      vaccine: 'Vacuna contra Covid',
-      issueBy: 'Ministerio de Salud del Perú',
-      issueDate: new Date('1999/08/03'),
-      doses: [
-        {
-          order: 2,
-          name: '2da dosis',
-          vaccinationDate: new Date('2021/08/03'),
-          manufacturer: 'PFIZER (FFH244)',
-          vaccinationPlace:
-            'LA LIBERTAD - UPAO (Movil y Peatonal) - LA LIBERTAD TRUJILLO TRUJILLO',
-        },
-        {
-          order: 1,
-          name: '1ra dosis',
-          vaccinationDate: new Date('2021/08/03'),
-          manufacturer: 'PFIZER (FFH244)',
-          vaccinationPlace:
-            'LA LIBERTAD - UPAO (Movil y Peatonal) - LA LIBERTAD TRUJILLO TRUJILLO',
-        },
-      ],
-    };
+    this.certificateService
+      .getOneCachedById(certificateId)
+      .subscribe((certificate) => {
+        this.certificate = certificate;
+        this.loadQRCode(certificate.qrData);
+      });
   }
 
-  async ngAfterViewInit() {
-    await QRCode.toCanvas(
-      this.canvasElement.nativeElement,
-      this.certificate.qrData,
-      {
-        width: 300,
-      }
-    );
+  async loadQRCode(value: string): Promise<void> {
+    await QRCode.toCanvas(this.canvasElement.nativeElement, value, {
+      width: 300,
+    });
   }
 
   downloadPdf() {}

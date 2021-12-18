@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <strong>Agregar carnet</strong>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-progress-bar *ngIf="isLoading" type="indeterminate"></ion-progress-bar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="addCertificate()">
+    <ion-list>
+      <ion-item class="form-item">
+        <ion-label position="floating"> Tipo de documento </ion-label>
+
+        <ion-select formControlName="documentType" interface="action-sheet">
+          <ion-select-option value="DNI">
+            DOCUMENTO NACIONAL DE IDENTIDAD
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="form-item">
+        <ion-label position="floating"> Número de documento </ion-label>
+        <ion-input
+          formControlName="documentNumber"
+          type="text"
+          [minlength]="8"
+          [maxlength]="8"
+        ></ion-input>
+      </ion-item>
+
+      <h5>Fecha de nacimiento</h5>
+      <ion-datetime formControlName="birthDate" presentation="date">
+      </ion-datetime>
+
+      <h5>Fecha de emisión</h5>
+      <ion-datetime formControlName="issueDate" presentation="date">
+      </ion-datetime>
+
+      <ion-button
+        class="submit-button"
+        type="submit"
+        expand="block"
+        [disabled]="form.invalid || isLoading"
+      >
+        Agregar carnet
+      </ion-button>
+    </ion-list>
+  </form>
+</ion-content>

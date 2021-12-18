@@ -2,7 +2,9 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
+  Output,
   ViewChild,
 } from '@angular/core';
 import * as QRCode from 'qrcode';
@@ -16,10 +18,13 @@ import { Certificate, EMPTY_CERTIFICATE } from '../../../models/certificate';
 })
 export class CardComponent implements AfterViewInit {
   @ViewChild('barcode', { static: true })
-  canvasElement: ElementRef;
+  canvasElement!: ElementRef;
 
   @Input()
   certificate: Certificate = EMPTY_CERTIFICATE;
+
+  @Output()
+  deleted = new EventEmitter<string>();
 
   constructor() {}
 
@@ -33,7 +38,7 @@ export class CardComponent implements AfterViewInit {
     );
   }
 
-  deleteCertifcate() {
-    console.log('CLICKED');
+  deleteCertifcate(): void {
+    this.deleted.emit(this.certificate.id);
   }
 }
