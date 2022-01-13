@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:dev": "ng serve --hmr --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,6 +20,8 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@capacitor-community/barcode-scanner": "^2.0.1",
+    "@capacitor/android": "3.3.3",
     "@capacitor/app": "1.0.7",
     "@capacitor/core": "3.3.3",
     "@capacitor/haptics": "1.1.3",

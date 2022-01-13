@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ViewDidEnter } from '@ionic/angular';
 import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
-import { v4 as uuidv4 } from '@lukeed/uuid';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
-import { Certificate, EMPTY_CERTIFICATE } from '../models/certificate';
+import { Certificate } from '../models/certificate';
 import { CertificateService } from '../services/certificate.service';
 
 SwiperCore.use([Pagination]);
@@ -32,7 +32,21 @@ export class HomePage implements ViewDidEnter {
     this.loadAllCertificates();
   }
 
-  scanQr() {}
+  async scanQr(): Promise<void> {
+    await BarcodeScanner.hideBackground(); // make background of WebView transparent
+    console.log('FIRST');
+
+    const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
+    console.log('SECOND');
+
+    // if the result has content
+    if (result.hasContent) {
+      console.log('THIRD');
+      console.log(result.content); // log the raw scanned content
+    }
+
+    console.log('FOURTH');
+  }
 
   addCertificate(): void {
     this.router.navigateByUrl('/add-certificate');
