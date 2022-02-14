@@ -7,6 +7,12 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="onRefresh()">
+        <ion-icon slot="icon-only" name="reload"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -121,3 +127,11 @@
     </ion-grid>
   </div>
 </ion-content>
+
+<ngx-spinner
+  bdColor="rgba(0,0,0,0)"
+  size="medium"
+  color="#40bc9b"
+  type="ball-clip-rotate"
+  [fullScreen]="true"
+></ngx-spinner>

@@ -35,13 +35,15 @@
         ></ion-input>
       </ion-item>
 
-      <h5>Fecha de nacimiento</h5>
-      <ion-datetime formControlName="birthDate" presentation="date">
-      </ion-datetime>
+      <ion-item class="form-item">
+        <ion-label position="floating"> Fecha de nacimiento </ion-label>
+        <ion-input type="date" formControlName="birthDate"></ion-input>
+      </ion-item>
 
-      <h5>Fecha de emisión</h5>
-      <ion-datetime formControlName="issueDate" presentation="date">
-      </ion-datetime>
+      <ion-item class="form-item">
+        <ion-label position="floating"> Fecha de emisión </ion-label>
+        <ion-input type="date" formControlName="issueDate"></ion-input>
+      </ion-item>
 
       <ion-button
         class="submit-button"

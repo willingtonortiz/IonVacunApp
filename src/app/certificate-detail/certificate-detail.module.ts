@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CertificateDetailPageRoutingModule } from './certificate-detail-routing.module';
-
 import { CertificateDetailPage } from './certificate-detail.page';
 
 @NgModule({
@@ -13,8 +12,9 @@ import { CertificateDetailPage } from './certificate-detail.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CertificateDetailPageRoutingModule
+    CertificateDetailPageRoutingModule,
+    NgxSpinnerModule,
   ],
-  declarations: [CertificateDetailPage]
+  declarations: [CertificateDetailPage],
 })
 export class CertificateDetailPageModule {}
